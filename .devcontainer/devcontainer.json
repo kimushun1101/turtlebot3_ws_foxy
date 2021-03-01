@@ -8,7 +8,7 @@
 	},
 	"remoteUser": "ubuntu",
 	"runArgs": [
-		"-p", "6080:80",
+		// "-p", "6080:80",
 		"--shm-size=512m"
 		// "--network=host",
 		// "--cap-add=SYS_PTRACE",
@@ -16,11 +16,13 @@
 		// "--security-opt=apparmor:unconfined",
 		// "--volume=/tmp/.X11-unix:/tmp/.X11-unix"
 	],
+	"appPort": ["6080:80"],
+	"overrideCommand": false,
 	// "containerEnv": { "DISPLAY": "${localEnv:DISPLAY}" },
 	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		"terminal.integrated.shell.linux": "/bin/bash"
-	},
+	// "settings": {
+	// 	"terminal.integrated.shell.linux": "/bin/bash"
+	// },
 	"extensions": [
 		"dotjoshjohnson.xml",
 		"laurenttreguier.uncrustify",
