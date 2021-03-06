@@ -1,16 +1,22 @@
 FROM tiryoh/ros2-desktop-vnc:foxy
 
-# ** [Optional] Uncomment this section to install additional packages. **
+# Replace apt urls
+RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.list
+
+# && apt-get upgrade -y
+RUN apt-get update && apt-get install -y --no-install-recommends \ 
+terminator \
+# See https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/
+python3-colcon-common-extensions \
+ros-foxy-gazebo-ros-pkgs \
+ros-foxy-cartographer ros-foxy-cartographer-ros \ 
+ros-foxy-navigation2 ros-foxy-nav2-bringup \
+python3-vcstool \
 #
-# ENV DEBIAN_FRONTEND=noninteractive
-# RUN apt-get update \
-#    && apt-get -y install --no-install-recommends <your-package-list-here> \
-#    #
-#    # Clean up
-#    && apt-get autoremove -y \
-#    && apt-get clean -y \
-#    && rm -rf /var/lib/apt/lists/*
-# ENV DEBIAN_FRONTEND=dialog
+# Clean up
+&& apt-get autoremove -y \
+&& apt-get clean -y \
+&& rm -rf /var/lib/apt/lists/*
 
 # Set up auto-source of workspace for ros user
 ARG WORKSPACE
