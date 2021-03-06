@@ -16,7 +16,7 @@
 		// "--security-opt=apparmor:unconfined",
 		// "--volume=/tmp/.X11-unix:/tmp/.X11-unix"
 	],
-	"appPort": ["6080:80"],
+	"appPort": ["127.0.0.1:6080:80"],
 	"overrideCommand": false,
 	// "containerEnv": { "DISPLAY": "${localEnv:DISPLAY}" },
 	// Set *default* container specific settings.json values on container create.
