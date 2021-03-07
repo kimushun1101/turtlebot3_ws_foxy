@@ -23,6 +23,7 @@
 	// "settings": {
 	// 	"terminal.integrated.shell.linux": "/bin/bash"
 	// },
+	"postCreateCommand": "mkdir -p /home/ubuntu/Desktop/ && cp -s /workspaces/turtlebot3_ws/scripts/* /home/ubuntu/Desktop/",
 	"extensions": [
 		"dotjoshjohnson.xml",
 		"laurenttreguier.uncrustify",
