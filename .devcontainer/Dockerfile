@@ -5,7 +5,7 @@ RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.l
 
 # && apt-get upgrade -y
 RUN apt-get update && apt-get install -y --no-install-recommends \ 
-# terminator \
+terminator \
 # See https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/
 python3-colcon-common-extensions \
 ros-foxy-gazebo-ros-pkgs \
@@ -21,6 +21,8 @@ ros-foxy-dynamixel-sdk \
 && apt-get autoremove -y \
 && apt-get clean -y \
 && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /home/ubuntu/Desktop/ && cp /usr/share/applications/terminator.desktop /home/ubuntu/Desktop
 
 # Set up auto-source of workspace for ros user
 ARG WORKSPACE
