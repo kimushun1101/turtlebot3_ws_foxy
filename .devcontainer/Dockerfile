@@ -12,11 +12,8 @@ ros-foxy-gazebo-ros-pkgs \
 ros-foxy-cartographer ros-foxy-cartographer-ros \ 
 ros-foxy-navigation2 ros-foxy-nav2-bringup \
 python3-vcstool \
-# See https://emanual.robotis.com/docs/en/platform/turtlebot3/sbc_setup/
-# python3-argcomplete python3-colcon-common-extensions libboost-system-dev build-essential \
-# ros-foxy-hls-lfcd-lds-driver \
+# See https://qiita.com/porizou1/items/d63a41fc1e478dfa5ab6
 ros-foxy-dynamixel-sdk \
-#
 # Clean up
 && apt-get autoremove -y \
 && apt-get clean -y \

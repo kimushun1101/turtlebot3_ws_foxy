@@ -8,21 +8,10 @@
 	},
 	"remoteUser": "ubuntu",
 	"runArgs": [
-		// "-p", "6080:80",
 		"--shm-size=512m"
-		// "--network=host",
-		// "--cap-add=SYS_PTRACE",
-		// "--security-opt=seccomp:unconfined",
-		// "--security-opt=apparmor:unconfined",
-		// "--volume=/tmp/.X11-unix:/tmp/.X11-unix"
 	],
 	"appPort": ["127.0.0.1:6080:80"],
 	"overrideCommand": false,
-	// "containerEnv": { "DISPLAY": "${localEnv:DISPLAY}" },
-	// Set *default* container specific settings.json values on container create.
-	// "settings": {
-	// 	"terminal.integrated.shell.linux": "/bin/bash"
-	// },
 	"postCreateCommand": "mkdir -p /home/ubuntu/Desktop/ && cp -s /workspaces/turtlebot3_ws/scripts/* /home/ubuntu/Desktop/",
 	"extensions": [
 		"dotjoshjohnson.xml",
