@@ -5,6 +5,7 @@ RUN sed -i 's@archive.ubuntu.com@ftp.jaist.ac.jp/pub/Linux@g' /etc/apt/sources.l
 
 # && apt-get upgrade -y
 RUN apt-get update && apt-get install -y --no-install-recommends \ 
+    terminator \
     # See https://emanual.robotis.com/docs/en/platform/turtlebot3/quick-start/
     python3-colcon-common-extensions \
     ros-foxy-gazebo-ros-pkgs \
@@ -21,3 +22,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Set up auto-source of workspace for ros user
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
+
+# copy entrypoint
+COPY entrypoint.bash /entrypoint.bash
+RUN chmod 777 /entrypoint.bash
+
+# setup terminator config
+RUN mkdir -p /home/ros/.config/terminator
+COPY config/terminator/config /home/ros/.config/terminator

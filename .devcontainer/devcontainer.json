@@ -18,6 +18,8 @@
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
+	// "overrideCommand": false,
+	"postAttachCommand": "terminator",
 	"extensions": [
 		"dotjoshjohnson.xml",
 		"laurenttreguier.uncrustify",
