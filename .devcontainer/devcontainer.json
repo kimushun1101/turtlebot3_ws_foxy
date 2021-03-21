@@ -12,7 +12,7 @@
 	],
 	"appPort": ["127.0.0.1:6080:80"],
 	"overrideCommand": false,
-	"postCreateCommand": "mkdir -p /home/ubuntu/Desktop/ && cp -s /workspaces/turtlebot3_ws/scripts/* /home/ubuntu/Desktop/",
+	"postCreateCommand": "mkdir -p /home/ubuntu/Desktop/ && cp -s ${containerWorkspaceFolder}/scripts/* /home/ubuntu/Desktop/",
 	"extensions": [
 		"dotjoshjohnson.xml",
 		"laurenttreguier.uncrustify",
