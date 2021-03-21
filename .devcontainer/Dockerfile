@@ -23,10 +23,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
 
-# copy entrypoint
-COPY entrypoint.bash /entrypoint.bash
-RUN chmod 777 /entrypoint.bash
-
 # setup terminator config
 RUN mkdir -p /home/ros/.config/terminator
 COPY config/terminator/config /home/ros/.config/terminator
