@@ -24,3 +24,4 @@ RUN mkdir -p /home/ubuntu/Desktop/ && cp /usr/share/applications/terminator.desk
 # Set up auto-source of workspace for ros user
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ubuntu/.bashrc
+ENV WSDIR=${WORKSPACE}
