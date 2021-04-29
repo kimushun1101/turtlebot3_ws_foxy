@@ -34,15 +34,38 @@ To remove a linter just delete it's name from this line:
           linter: [cppcheck, cpplint, uncrustify, lint_cmake, xmllint, flake8, pep257]
 ```
 
-## How to use this
+## How to use this template
 
 ### Prerequisites
 
 You should already have Docker and VSCode with the remote containers plugin installed on your system.
+To make nvidia driver and opengl available in docker, follow the installation instructions for docker-nvidia. 
+They include the steps in docker and add the additional gpu layer. 
 
 * [docker](https://docs.docker.com/engine/install/)
+* [docker-nvidia (includes docker install and additional installation for NVidia GPU accelerated hosts)](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
 * [vscode](https://code.visualstudio.com/)
 * [vscode remote containers plugin](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+
+### Get the template
+
+Click on "use this template"
+
+![template_use](https://user-images.githubusercontent.com/6098197/91331899-43f23b80-e780-11ea-92c8-b4665ce126f1.png)
+
+### Create your repository
+
+On the next dialog, name the repository you would like to start and decide if you want all of the branches, or just the latest LTS: Foxy.
+
+![template_new](https://user-images.githubusercontent.com/6098197/91332035-713ee980-e780-11ea-81d3-13b170f568b0.png)
+
+Github will then create a new repository with the contents of this one in your account.  It grabs the latest changes as "initial commit".
+
+### Clone your repo
+
+Now you can clone your repo as normal
+
+![template_download](https://user-images.githubusercontent.com/6098197/91332342-e4e0f680-e780-11ea-9525-49b0afa0e4bb.png)
 
 ### Open it in vscode
 
@@ -70,6 +93,46 @@ VSCode will build the dockerfile inside of `.devcontainer` for you.  If you open
 2. Install dependencies `Terminal->Run Task..->install dependencies`
 3. Develop!
 
+
+
+## Error handling for GPU acceleration
+
+
+#### Docker image cannot be built: 
+
+The dockerfile can be built but using devcontainer.json results in error messages like "docker container cannot connect to device [[gpu]]" means docker itself is installed, but not the above mentioned nvidia part. 
+
+Solution is, to follow the guide and the test with nvidia-smi as indicated here: 
+- [docker-nvidia(for GPU acceleration on Nvidia GPU hosts)](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+
+
+### Programs in Docker cannot access GPU
+
+Error messages that show lacking GPU acceleration (in docker terminal) 
+```
+  $ sudo apt-get update   && sudo apt-get install -y -qq glmark2   && glmark2
+```
+results in: 
+```
+   libGL error: No matching fbConfigs or visuals found
+   libGL error: failed to load driver: swrast
+      X Error of failed request:  GLXBadContext
+   Major opcode of failed request:  151 (GLX)
+   Minor opcode of failed request:  6 (X_GLXIsDirect)
+   Serial number of failed request:  48
+   Current serial number in output stream:  47
+```
+
+Solution is, to follow the guide and the test with nvidia-smi as indicated here: 
+[docker-nvidia(for GPU acceleration on Nvidia GPU hosts)](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker)
+
+
+#### more information
+
+- https://wiki.ros.org/docker/Tutorials/GUI
+- https://medium.com/@benjamin.botto/opengl-and-cuda-applications-in-docker-af0eece000f1
+- https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker
+
 ## Sample source codes and environment
 
 ### Turtlebot3
@@ -80,11 +143,6 @@ TurtleBot is a ROS standard platform robot.
 
 In addition, Turtlebot3 scripts are prepared in `scripts`.
 Those shell scripts are copied on Desktop in VNC environment.
-
-### GUI settings
-
-The [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker) is available to visualize GUI applications.
-If you get some troubles, see the original [VSCode ROS2 Workspace Template](https://github.com/athackst/vscode_ros2_workspace/tree/foxy-nvidia#error-handling-for-gpu-acceleration).
 
 ### Terminator settings
 
