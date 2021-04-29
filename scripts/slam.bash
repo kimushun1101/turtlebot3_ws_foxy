@@ -1,6 +1,6 @@
 #!/bin/bash
 source /opt/ros/foxy/setup.bash
-source /workspaces/turtlebot3_ws/install/setup.bash
+source $WSDIR/install/setup.bash
 
 # https://emanual.robotis.com/docs/en/platform/turtlebot3/slam_simulation/
 export TURTLEBOT3_MODEL=burger
