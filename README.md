@@ -81,7 +81,12 @@ TurtleBot is a ROS standard platform robot.
 In addition, Turtlebot3 scripts are prepared in `scripts`.
 Those shell scripts are copied on Desktop in VNC environment.
 
-### VNC environment
+### GUI settings
 
-See [docker_ros-desktop-vnc](https://github.com/Tiryoh/docker-ros-desktop-vnc).
-The Docker image provides HTML5 VNC interface to access Ubuntu LXDE + ROS.
+The [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html#docker) is available to visualize GUI applications.
+If you get some troubles, see the original [VSCode ROS2 Workspace Template](https://github.com/athackst/vscode_ros2_workspace/tree/foxy-nvidia#error-handling-for-gpu-acceleration).
+
+### Terminator settings
+
+See [chikuta-docker-envs](https://github.com/chikuta/chikuta-dockerfiles/blob/master/docker/ros2-foxy-focal/config/terminator/config).
+That is MIT License.
